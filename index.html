@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-	<!-- #6186ff #f003fc -->
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<title>Pulsar</title>
@@ -149,7 +148,6 @@
 				}
 
 				if (current) {
-					var ctx = canvas.getContext("2d");
 					if (cmd_type == "fade") {
 						color_str = document.getElementById("color" + current).value
 						r = g = b = null;
@@ -193,10 +191,10 @@
 							color[2] = (1 - p) * prev_color[2] + p * b;
 						}
 					}
-
-					ctx.fillStyle = "#" + toHex(color[0]) + toHex(color[1]) + toHex(color[2]);
-					ctx.fillRect(0, 0, canvas.width, canvas.height);
 				}
+				var ctx = canvas.getContext("2d");
+				ctx.fillStyle = "#" + toHex(color[0]) + toHex(color[1]) + toHex(color[2]);
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
 				tick++;
 				if (tick > totalLength) {
 					tick = 1;
